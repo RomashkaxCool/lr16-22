@@ -6,6 +6,9 @@ from src.settings import settings
 
 
 def init_sentry() -> None:
+    """
+    Initialize Sentry monitoring with integrations.
+    """
     if not settings.sentry_dsn:
         return
 
