@@ -1,15 +1,19 @@
+import os
+
+import fakeredis.aioredis
 import pytest
 from fastapi.testclient import TestClient
+
 from src.main import app
-import fakeredis.aioredis
-import os
 
 # Встановлюємо змінну для тестів
 os.environ["TESTING"] = "1"
 
+
 @pytest.fixture(scope="session")
 def client():
     return TestClient(app)
+
 
 @pytest.fixture
 def fake_redis(monkeypatch):

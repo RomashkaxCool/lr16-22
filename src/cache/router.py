@@ -1,16 +1,19 @@
-from fastapi import APIRouter, HTTPException
 import datetime
 import logging
+
 import sentry_sdk
+from fastapi import APIRouter, HTTPException
 
 router = APIRouter(prefix="/common", tags=["Common"])
 
 logger = logging.getLogger(__name__)
 
+
 @router.get("/healthcheck")
 def healthcheck():
     logger.info("[COMMON][HEALTHCHECK] Service health check called")
     return {"status": "ok", "message": "Service is running"}
+
 
 @router.get("/time")
 def get_time():
